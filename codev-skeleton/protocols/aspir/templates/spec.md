@@ -49,7 +49,7 @@ These belong in codev/plans/XXXX-*.md
 
 ### Settled Decisions (from ADRs)
 <!-- Reference ADRs from codev/adr/ that constrain this spec. If none exist, remove this subsection. -->
-- [ADR-NNNN](../adr/NNNN-slug.md): [One-line summary of how this decision constrains the spec]
+- [ADR title](../adr/slug.md): [One-line summary of how this decision constrains the spec]
 
 ### Technical Constraints
 - [Existing system limitations]

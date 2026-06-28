@@ -73,7 +73,7 @@ A glossary of project-specific terms — what they mean, what to avoid calling t
 
 ### Architecture Decision Records (`codev/adr/`)
 
-Short records of decisions that are hard to reverse, surprising without context, and the result of a real trade-off. Sequential numbering: `0001-slug.md`, `0002-slug.md`.
+Short records of decisions that are hard to reverse, surprising without context, and the result of a real trade-off. Named by kebab-case slug: `use-postgres.md`, `event-sourcing.md`.
 
 **When to write**: only when all three are true: (1) hard to reverse, (2) a future reader would wonder "why?", (3) genuine alternatives existed. Most decisions don't qualify — skip the ADR if any condition is missing.
 
@@ -81,7 +81,7 @@ Short records of decisions that are hard to reverse, surprising without context,
 
 Before spawning a builder, use `/codev-align` to stress-test the plan against the domain model. This produces ADRs in `codev/adr/` and sharpens terminology in `codev/UBIQUITOUS_LANGUAGE.md`.
 
-**When writing specs**: check `codev/adr/` for existing ADRs. If an ADR covers a decision relevant to the spec, reference it in the Constraints section (e.g., "See ADR-0003") rather than re-deriving the reasoning. The spec still documents solution approaches, success criteria, and requirements — but settled architectural decisions live in ADRs, not inline in the spec.
+**When writing specs**: check `codev/adr/` for existing ADRs. If an ADR covers a decision relevant to the spec, reference it in the Constraints section (e.g., "See `use-postgres.md`") rather than re-deriving the reasoning. The spec still documents solution approaches, success criteria, and requirements — but settled architectural decisions live in ADRs, not inline in the spec.
 
 **When writing plans**: reference ADRs that constrain implementation choices. If a plan phase depends on a decision captured in an ADR, cite it rather than restating the rationale.
 
