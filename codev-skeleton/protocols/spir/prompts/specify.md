@@ -37,6 +37,19 @@ Before exploring solution approaches, check the issue body for a section named "
 
 If two baked decisions contradict each other (e.g., two different language choices), do not pick one — pause, flag the contradiction via `afx send`, and wait for resolution before drafting.
 
+### 0.6 Existing ADRs and Domain Language
+
+Check for architecture decisions and domain terminology that were settled during alignment:
+
+```bash
+ls codev/adr/ 2>/dev/null
+cat codev/UBIQUITOUS_LANGUAGE.md 2>/dev/null
+```
+
+If ADRs exist, read them. Any decision captured in an ADR is settled — reference it in the spec's Constraints section (e.g., "Per ADR-0003: ...") rather than re-deriving the reasoning. Do not propose solution approaches that contradict an existing ADR unless you flag the conflict via `afx send architect`.
+
+If a `codev/UBIQUITOUS_LANGUAGE.md` exists, use its terminology consistently throughout the spec. If you find yourself using a term differently than the glossary defines it, reconcile the conflict — either update the glossary or adjust the spec.
+
 ### 1. Clarifying Questions (ONLY IF NO SPEC EXISTS)
 
 Before writing anything, ask clarifying questions to understand:

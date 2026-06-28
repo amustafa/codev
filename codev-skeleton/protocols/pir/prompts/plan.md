@@ -36,6 +36,14 @@ gh issue view {{issue.number}}
 
 Understand what's being asked. For a bug, identify the symptom. For a feature, identify the desired outcome.
 
+### 1.5 Check Existing ADRs
+
+```bash
+ls codev/adr/ 2>/dev/null
+```
+
+If ADRs exist, read them. Decisions captured in ADRs constrain your implementation choices — cite them in the plan rather than restating the rationale.
+
 ### 2. Investigate the Codebase
 
 - Use Glob / Grep / Read to find the relevant code

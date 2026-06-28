@@ -23,12 +23,20 @@ Before planning, verify:
 
 ## Process
 
+### 0. Check Existing ADRs
+
+```bash
+ls codev/adr/ 2>/dev/null
+```
+
+If ADRs exist, read them. Decisions captured in ADRs constrain your implementation choices — cite them when they affect a phase's approach rather than restating the rationale. If the spec references specific ADRs in its Constraints section, those are non-negotiable inputs to the plan.
+
 ### 1. Analyze the Specification
 
 Read the spec thoroughly. Identify:
 - All functional requirements
 - Non-functional requirements
-- Dependencies and constraints
+- Dependencies and constraints (including ADR-referenced decisions)
 - Success criteria to validate against
 
 ### 2. Identify Implementation Phases
