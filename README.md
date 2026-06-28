@@ -1,8 +1,74 @@
 # Codev: Amustafa Fork
 
-Personal fork of [cluesmith/codev](https://github.com/cluesmith/codev) with domain-alignment tooling. The main addition is a pre-spawn alignment phase (`/codev-align`) that stress-tests plans against the project's domain model before builders start writing specs. ADRs and ubiquitous language settled during alignment flow into spec and plan prompts automatically, so builders reference existing decisions instead of re-deriving them.
+Personal fork of [cluesmith/codev](https://github.com/cluesmith/codev) adding domain-driven alignment as a first-class pre-spawn step.
 
-**Fork management**: `make status` to check divergence, `make rebase` to sync with upstream. See the [Makefile](Makefile) for all targets.
+## What This Fork Adds
+
+### The Problem
+
+Upstream Codev's SPIR protocol starts at the **Specify** phase — the builder writes a spec from scratch, often re-deriving architectural decisions and domain terminology that the architect already settled in conversation. The spec template's "Constraints" and "Problem Analysis" sections become a pale imitation of alignment work that should have happened earlier.
+
+### The Solution: Alignment Before Specification
+
+This fork introduces a structured alignment step that happens **before** spawning a builder. The architect uses `/codev-align` to grill the plan against the project's domain model, producing two kinds of artifacts:
+
+- **Ubiquitous Language** (`codev/UBIQUITOUS_LANGUAGE.md`) — a glossary of project-specific terms, what they mean, what to avoid calling them, and how they relate
+- **Architecture Decision Records** (`codev/adr/`) — short records of decisions that are hard to reverse, surprising without context, and the result of a real trade-off
+
+When the builder spawns, it finds these artifacts already committed and references them instead of recreating the reasoning.
+
+### Changes From Upstream
+
+**New skill:**
+- `codev-align` — interactive grilling session that challenges plans against the domain model, sharpens terminology, cross-references against code, and updates UL/ADRs inline as decisions crystallize
+
+**Modified prompts (spec phase):**
+- SPIR, ASPIR, and porch specify prompts now include a step 0.6 that checks `codev/adr/` and `codev/UBIQUITOUS_LANGUAGE.md` before writing. Existing ADRs are treated as settled — referenced in Constraints rather than re-derived
+- Builders use the glossary terminology consistently and flag conflicts
+
+**Modified prompts (plan phase):**
+- SPIR, ASPIR, PIR, and porch plan prompts check for ADRs that constrain implementation choices and cite them rather than restating rationale
+
+**Modified templates:**
+- Spec templates (SPIR, ASPIR) include a "Settled Decisions (from ADRs)" subsection under Constraints
+
+**Modified CLAUDE.md template:**
+- Domain Documentation section documenting UL and ADR locations and conventions
+- "Alignment and ADR References in Specs/Plans" section with guidance for builders
+- Quick Start step 1 now reads: "run `/codev-align` to settle key decisions, then spawn a builder"
+
+### The Workflow
+
+```
+/codev-align "new caching layer"     # 1. Grill — settle decisions, update UL/ADRs
+git add codev/ && git commit          # 2. Commit — builders branch from HEAD
+afx spawn 42 --protocol spir         # 3. Spawn — builder finds ADRs, builds on them
+```
+
+### The Line Between Alignment and Spec
+
+| | Alignment (`/codev-align`) | Specification (SPIR S-phase) |
+|---|---|---|
+| **Mode** | Interactive conversation | Autonomous document writing |
+| **Who** | Architect + human | Builder (agent) |
+| **Produces** | UL updates, ADRs | Spec document |
+| **Depth** | Problem framing, key decisions, terminology | Solution approaches, success criteria, requirements |
+| **Artifacts** | `codev/UBIQUITOUS_LANGUAGE.md`, `codev/adr/` | `codev/specs/N-name.md` |
+
+The spec still does everything it does upstream — solution approaches with tradeoffs, success criteria, performance/security requirements, test scenarios. It just doesn't re-derive the architectural decisions that were already settled during alignment.
+
+## Fork Management
+
+This fork tracks upstream on `main` and carries custom changes on `amustafa-main` (the default branch).
+
+| Command | What it does |
+|---|---|
+| `make status` | Show divergence in both directions |
+| `make sync` | Fetch upstream + rebase `amustafa-main` on `upstream/main` (local only) |
+| `make rebase` | Same + force-push to origin |
+| `make sync-main` | Reset local `main` to match `upstream/main` exactly |
+| `make upstream-pr BRANCH=feat/foo` | Create a branch off `upstream/main` for a PR to cluesmith |
+| `make cherry-pick-upstream COMMIT=abc` | Cherry-pick an upstream commit onto `amustafa-main` |
 
 ---
 
