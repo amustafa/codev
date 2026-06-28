@@ -201,6 +201,28 @@ Key locations:
 - **During implementation**: Use `porch status <id>` for detailed phase status
 - **After completion**: Close the GitHub Issue when PR is merged
 
+### Working with Project Labels
+
+If your project uses GitHub labels with a structured prefix (e.g. `area/*`, `team/*`, `priority/*`) to organize issues, treat them as the primary axis when users ask about grouping, editing, or auditing. Run `gh label list` to discover what your project uses, infer the convention from how existing issues are labeled, and ask the user to confirm before applying broad changes.
+
+**Discover the convention:**
+
+```bash
+# List all labels (skim for structured prefixes)
+gh label list
+
+# Filter to a specific prefix family
+gh label list --search "<prefix>/"
+```
+
+**Inferring policy:** conventions vary across projects. Common patterns:
+
+- **One label per axis.** Many projects allow only one `<prefix>/*` label per issue, with a dedicated multi-axis fallback (e.g. `<prefix>/cross-cutting`).
+- **Layered families.** Some projects use multiple prefixes together (`area/*` + `team/*` + `priority/*`).
+- **Separator style.** `<family>/<value>` and `<family>:<value>` both exist in the wild — respect whatever convention the project already uses.
+
+Before bulk-applying labels or relabeling issues, ask the user to confirm the convention — don't assume.
+
 ### Area Labels — the organizing axis for issues
 
 `area/*` is the **primary axis** for organizing GitHub Issues in this repo. When users ask to group, edit, audit, or bulk-move issues, treat `area/*` as the grouping dimension first — not `type:*` (we don't use them), not milestones, not assignees.
@@ -639,6 +661,16 @@ afx open file.ts            # Open file in annotation viewer (NOT system open)
 ### Configuration
 
 Agent Farm is configured via `.codev/config.json` at the project root. Created during `codev init` or `codev adopt`. Override via CLI: `--architect-cmd`, `--builder-cmd`, `--shell-cmd`.
+
+```json
+{
+  "shell": {
+    "architect": "claude",
+    "builder": "claude",
+    "shell": "bash"
+  }
+}
+```
 
 ## Inter-agent messaging
 

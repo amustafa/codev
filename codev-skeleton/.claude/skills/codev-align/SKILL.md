@@ -22,7 +22,7 @@ If a question can be answered by exploring the codebase, explore the codebase in
 This skill writes to Codev's domain documentation:
 
 - **Ubiquitous Language**: `codev/UBIQUITOUS_LANGUAGE.md`
-- **Architecture Decision Records**: `codev/adr/` (sequential: `0001-slug.md`, `0002-slug.md`)
+- **Architecture Decision Records**: `codev/adr/` (kebab-case slugs: `use-postgres.md`, `event-sourcing.md`)
 
 Create files lazily — only when you have something to write. If no `codev/UBIQUITOUS_LANGUAGE.md` exists, create one when the first term is resolved. If no `codev/adr/` exists, create it when the first ADR is needed.
 
@@ -103,7 +103,7 @@ If any of the three is missing, skip the ADR.
 
 #### ADR format
 
-ADRs live in `codev/adr/` with sequential numbering. Scan `codev/adr/` for the highest existing number and increment by one.
+ADRs live in `codev/adr/` named by kebab-case slug (e.g. `use-postgres.md`, `event-sourcing.md`). No numeric prefix.
 
 ```md
 # {Short title of the decision}
@@ -114,7 +114,7 @@ ADRs live in `codev/adr/` with sequential numbering. Scan `codev/adr/` for the h
 That's it. An ADR can be a single paragraph. The value is in recording *that* a decision was made and *why*.
 
 Optional sections (only when they add genuine value):
-- **Status** frontmatter (`proposed | accepted | deprecated | superseded by ADR-NNNN`)
+- **Status** frontmatter (`proposed | accepted | deprecated | superseded by <slug>`)
 - **Considered Options** — only when the rejected alternatives are worth remembering
 - **Consequences** — only when non-obvious downstream effects need to be called out
 
