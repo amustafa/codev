@@ -17,6 +17,17 @@ Read these files to understand the task:
 
 Create `codev/specs/{project-id}-{name}.md` with:
 
+### Before Writing
+
+Check for architecture decisions and domain terminology that were settled during alignment:
+
+```bash
+ls codev/adr/ 2>/dev/null
+cat codev/UBIQUITOUS_LANGUAGE.md 2>/dev/null
+```
+
+If ADRs exist, reference them in the Constraints section rather than re-deriving the reasoning. Use the glossary terminology consistently.
+
 ### Required Sections
 
 1. **Metadata** - ID, status, created date, protocol
@@ -24,7 +35,7 @@ Create `codev/specs/{project-id}-{name}.md` with:
 3. **Problem Statement** - What problem does this solve?
 4. **Desired State** - What does success look like?
 5. **Success Criteria** - Testable acceptance criteria (checkboxes)
-6. **Constraints** - Technical and business constraints
+6. **Constraints** - Technical and business constraints (include ADR references where applicable)
 7. **Solution Approach** - High-level technical approach
 8. **Test Scenarios** - How will this be tested?
 9. **Open Questions** - Any unresolved questions (should be minimal)

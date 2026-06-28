@@ -11,7 +11,10 @@ Create a detailed implementation plan based on the APPROVED specification. The p
 Read these files:
 1. `codev/specs/{project-id}-*.md` - **The approved spec** (source of truth)
 2. `codev/status/{project-id}-*.md` - Current project state
-3. Relevant source files to understand the codebase
+3. `codev/adr/*.md` - Existing ADRs (decisions that constrain implementation)
+4. Relevant source files to understand the codebase
+
+If ADRs exist, cite them in the plan where they affect implementation choices rather than restating the rationale.
 
 ## Output Requirements
 
