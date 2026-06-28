@@ -1,3 +1,11 @@
+# Codev: Amustafa Fork
+
+Personal fork of [cluesmith/codev](https://github.com/cluesmith/codev) with domain-alignment tooling. The main addition is a pre-spawn alignment phase (`/codev-align`) that stress-tests plans against the project's domain model before builders start writing specs. ADRs and ubiquitous language settled during alignment flow into spec and plan prompts automatically, so builders reference existing decisions instead of re-deriving them.
+
+**Fork management**: `make status` to check divergence, `make rebase` to sync with upstream. See the [Makefile](Makefile) for all targets.
+
+---
+
 # Codev: A Human-Agent Software Development OS
 
 [![npm version](https://img.shields.io/npm/v/@cluesmith/codev.svg)](https://www.npmjs.com/package/@cluesmith/codev)
