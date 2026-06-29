@@ -46,7 +46,7 @@ Follow the implementation plan at: `{{plan.path}}`
 {{/if}}
 
 {{#if issue}}
-## Issue #{{issue.number}}
+## Issue {{issue.number}}
 **Title**: {{issue.title}}
 
 **Description**:

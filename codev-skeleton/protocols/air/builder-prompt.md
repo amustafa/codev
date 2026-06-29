@@ -33,7 +33,7 @@ If the issue body contains a section named "Baked Decisions" (any heading level,
 If the architect's baked-decisions section contains internal contradictions (e.g., two different language choices), do not pick one — pause, flag the contradiction to the architect via `afx send`, and wait for resolution before proceeding.
 
 {{#if issue}}
-## Issue #{{issue.number}}
+## Issue {{issue.number}}
 **Title**: {{issue.title}}
 
 **Description**:
@@ -44,20 +44,20 @@ If the architect's baked-decisions section contains internal contradictions (e.g
 2. Implement the feature (< 300 LOC)
 3. Write tests for the feature
 4. Create PR with review in the PR body (NOT as a separate file)
-5. Notify architect via `afx send architect "PR #N ready for review (implements #{{issue.number}})"`
+5. Notify architect via `afx send architect "PR #N ready for review (implements {{issue.number}})"`
 
 **IMPORTANT**: AIR produces NO spec, plan, or review files. The review goes in the PR body.
 
 If the feature is too complex (> 300 LOC or architectural changes), notify the Architect via:
 ```bash
-afx send architect "Issue #{{issue.number}} is more complex than expected. [Reason]. Recommend escalating to ASPIR."
+afx send architect "Issue {{issue.number}} is more complex than expected. [Reason]. Recommend escalating to ASPIR."
 ```
 
 ## Notifications
 Always use `afx send architect "..."` to notify the architect at key moments:
-- **PR ready**: `afx send architect "PR #N ready for review (implements #{{issue.number}})"`
-- **PR merged**: `afx send architect "PR #N merged for issue #{{issue.number}}. Ready for cleanup."`
-- **Blocked**: `afx send architect "Blocked on issue #{{issue.number}}: [reason]"`
+- **PR ready**: `afx send architect "PR #N ready for review (implements {{issue.number}})"`
+- **PR merged**: `afx send architect "PR #N merged for issue {{issue.number}}. Ready for cleanup."`
+- **Blocked**: `afx send architect "Blocked on issue {{issue.number}}: [reason]"`
 {{/if}}
 
 ## Handling Flaky Tests
