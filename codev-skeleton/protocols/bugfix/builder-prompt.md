@@ -28,7 +28,7 @@ You are running in STRICT mode. This means:
 Follow the BUGFIX protocol. Read and internalize the protocol before starting any work. The full protocol text is included below under **## Protocol Reference (full text)**.
 
 {{#if issue}}
-## Issue #{{issue.number}}
+## Issue {{issue.number}}
 **Title**: {{issue.title}}
 
 **Description**:
@@ -39,19 +39,19 @@ Follow the BUGFIX protocol. Read and internalize the protocol before starting an
 2. Identify root cause
 3. Implement fix (< 300 LOC)
 4. Add regression test
-5. Create PR with "Fixes #{{issue.number}}" in body
-6. Notify architect via `afx send architect "PR #N ready for review (fixes #{{issue.number}})"`
+5. Create PR with "Fixes {{issue.number}}" in body
+6. Notify architect via `afx send architect "PR #N ready for review (fixes {{issue.number}})"`
 
 If the fix is too complex (> 300 LOC or architectural changes), notify the Architect via:
 ```bash
-afx send architect "Issue #{{issue.number}} is more complex than expected. [Reason]. Recommend escalating to SPIR."
+afx send architect "Issue {{issue.number}} is more complex than expected. [Reason]. Recommend escalating to SPIR."
 ```
 
 ## Notifications
 Always use `afx send architect "..."` to notify the architect at key moments:
-- **PR ready**: `afx send architect "PR #N ready for review (fixes #{{issue.number}})"`
-- **PR merged**: `afx send architect "PR #N merged for issue #{{issue.number}}. Ready for cleanup."`
-- **Blocked**: `afx send architect "Blocked on issue #{{issue.number}}: [reason]"`
+- **PR ready**: `afx send architect "PR #N ready for review (fixes {{issue.number}})"`
+- **PR merged**: `afx send architect "PR #N merged for issue {{issue.number}}. Ready for cleanup."`
+- **Blocked**: `afx send architect "Blocked on issue {{issue.number}}: [reason]"`
 {{/if}}
 
 ## Handling Flaky Tests

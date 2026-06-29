@@ -49,16 +49,16 @@ The EXPERIMENT protocol ensures disciplined experimentation:
 ## If You Open a PR
 
 Most experiments are committed to a branch without a PR, but if you do open one
-to integrate findings and the experiment was triggered by a GitHub issue:
+to integrate findings and the experiment was triggered by an issue:
 
-**PR body requirements**: The PR body MUST include `Closes #<N>` (for feature
-issues) or `Fixes #<N>` (for bug issues) for the driving issue so GitHub
-auto-closes it on merge. If the PR closes multiple issues, include one keyword
-per issue.
+**PR body requirements**: The PR body MUST include `Fixes <N>` (for bug issues)
+or `Closes <N>` (for feature issues) for the driving issue. If the forge
+supports auto-close on merge (e.g. GitHub), this links the PR to the issue.
+If the PR closes multiple issues, include one keyword per issue.
 
 **Exception**: if this PR only partially addresses the issue (e.g. experiment
 validates an approach but production implementation is deferred), use
-`Refs #<N>` or `Part of #<N>` instead — the issue stays open until a follow-up
+`Refs <N>` or `Part of <N>` instead — the issue stays open until a follow-up
 PR closes it.
 
 ## Handling Flaky Tests

@@ -128,6 +128,7 @@ function getProviderPresets(): Record<string, Record<string, string | null>> {
     gitlab: buildPresetFromScripts('gitlab', ['team-activity', 'on-it-timestamps']),
     gitea: buildPresetFromScripts('gitea', ['team-activity', 'on-it-timestamps', 'pr-search', 'pr-diff']),
     linear: buildPresetFromScripts('linear', ['team-activity', 'on-it-timestamps']),
+    jira: buildPresetFromScripts('jira', ['team-activity', 'on-it-timestamps']),
   };
   return _providerPresets;
 }

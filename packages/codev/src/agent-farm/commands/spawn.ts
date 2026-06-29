@@ -822,7 +822,7 @@ async function spawnIssueDrivenBuilder(
     // The porch project ID — what `porch next/done/approve` expects.
     // NOT the builder agent name (which includes the `builder-` prefix).
     project_id: porchProjectId,
-    input_description: `work for GitHub Issue #${issueNumber}`,
+    input_description: `work for issue ${issueNumber}`,
     issue: { number: issueNumber, title: issue.title, body: issue.body || '(No description provided)' },
   };
   if (options.branch) {

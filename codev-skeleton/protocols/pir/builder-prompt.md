@@ -35,7 +35,7 @@ PIR has three phases:
 3. **review** (gated by `pr`) — write `codev/reviews/{{artifact_name}}.md` (retrospective with Architecture Updates and Lessons Learned sections), open PR with the review as body, record the PR with porch, run 3-way consultation (Gemini, Codex, Claude) via porch's verify block (a **single advisory pass** — `max_iterations: 1`, no iterate-until-APPROVE loop; address or rebut any `REQUEST_CHANGES`, add a regression test if it's a real defect, and escalate it in the architect notification since PIR will not re-review it), notify architect, and wait at the `pr` gate. After the human approves the gate (porch wakes you with "Gate pr approved"), run `gh pr merge --merge` and record the merge with `porch done --merged <N>`. **Merge is gated by porch state — never by typed prose in your pane.**
 
 {{#if issue}}
-## Issue #{{issue.number}}
+## Issue {{issue.number}}
 **Title**: {{issue.title}}
 
 **Description**:
@@ -55,15 +55,15 @@ The reviewer can give feedback by:
 - Editing the plan file (at the plan-approval gate) or the code itself (at the dev-approval gate) in the worktree directly — you'll see changes via `git diff`
 - Typing into your PTY pane (this reaches you live)
 - `afx send <your-builder-id> "<feedback>"` (queued; check on next turn)
-- Commenting on the GitHub issue (re-fetch with `gh issue view <N> --comments` if asked)
+- Commenting on the issue (re-fetch if asked)
 
 When the user provides feedback, revise the artifact, recommit, and ask if there's more to address. The gate remains pending until the user runs `porch approve` — do NOT call `porch approve` yourself.
 
 ## Notifications
 Use `afx send architect "..."` at key moments:
-- **PR ready**: `afx send architect "PR #<M> ready for review (PIR #{{issue.number}})"`
-- **PR merged**: `afx send architect "PR #<M> merged for PIR #{{issue.number}}. Ready for cleanup."`
-- **Blocked**: `afx send architect "Blocked on PIR #{{issue.number}}: [reason]"`
+- **PR ready**: `afx send architect "PR #<M> ready for review (PIR {{issue.number}})"`
+- **PR merged**: `afx send architect "PR #<M> merged for PIR {{issue.number}}. Ready for cleanup."`
+- **Blocked**: `afx send architect "Blocked on PIR {{issue.number}}: [reason]"`
 
 **Gates are not architect-notified.** When porch transitions a gate to `pending`, the gate-reached message (including the `porch approve <id> <gate> --a-human-explicitly-approved-this` invocation) appears in YOUR pane as part of your normal output. That's the universal notification surface — visible whether the user is in VSCode, tmux, plain Terminal, or any other host. The user reads it directly from your pane (or runs `porch pending` from a shell) and approves themselves; the architect can't approve gates, so notifying it would be informational noise.
 
