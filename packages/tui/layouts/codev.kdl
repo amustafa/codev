@@ -1,0 +1,11 @@
+layout {
+    pane split_direction="vertical" {
+        pane command="codev-tui" size="40%" {
+            name "Codev"
+            args "--no-zellij"
+        }
+        pane size="60%" stacked=true {
+            name "Terminals"
+        }
+    }
+}

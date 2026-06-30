@@ -126,6 +126,30 @@ Key locations:
 - Specifications go in: `codev/specs/`
 - Plans go in: `codev/plans/`
 - Reviews go in: `codev/reviews/`
+- Ubiquitous Language: `codev/UBIQUITOUS_LANGUAGE.md` - Domain glossary
+- ADRs: `codev/adr/` - Architecture Decision Records
+
+### Domain Documentation
+
+#### Ubiquitous Language (`codev/UBIQUITOUS_LANGUAGE.md`)
+
+A glossary of project-specific terms — what they mean, what to avoid calling them, and how they relate to each other. No implementation details, no specs, just terminology.
+
+**When to update**: when a term is resolved during design discussion, when you notice ambiguous or overloaded language, or when a new domain concept is introduced. Update inline as terms are resolved — don't batch.
+
+#### Architecture Decision Records (`codev/adr/`)
+
+Short records of decisions that are hard to reverse, surprising without context, and the result of a real trade-off. Sequential numbering: `0001-slug.md`, `0002-slug.md`.
+
+**When to write**: only when all three are true: (1) hard to reverse, (2) a future reader would wonder "why?", (3) genuine alternatives existed. Most decisions don't qualify — skip the ADR if any condition is missing.
+
+### Alignment and ADR References in Specs/Plans
+
+Before spawning a builder, use `/codev-align` to stress-test the plan against the domain model. This produces ADRs in `codev/adr/` and sharpens terminology in `codev/UBIQUITOUS_LANGUAGE.md`.
+
+**When writing specs**: check `codev/adr/` for existing ADRs. If an ADR covers a decision relevant to the spec, reference it in the Constraints section (e.g., "See ADR-0003") rather than re-deriving the reasoning. The spec still documents solution approaches, success criteria, and requirements — but settled architectural decisions live in ADRs, not inline in the spec.
+
+**When writing plans**: reference ADRs that constrain implementation choices. If a plan phase depends on a decision captured in an ADR, cite it rather than restating the rationale.
 
 ### Project Tracking
 
