@@ -17,7 +17,7 @@ These belong in codev/plans/2-jira-forge-provider.md
 - **ID**: 2-jira-forge-provider
 - **Status**: draft
 - **Created**: 2026-06-28
-- **GitHub Issue**: #2
+- **GitHub Issue**: [#2](https://github.com/amustafa/codev/issues/2)
 
 ## Problem Statement
 

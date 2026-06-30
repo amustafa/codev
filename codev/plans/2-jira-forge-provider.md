@@ -5,6 +5,7 @@
 - **Status**: draft
 - **Created**: 2026-06-28
 - **Spec**: `codev/specs/2-jira-forge-provider.md`
+- **GitHub Issue**: [#2](https://github.com/amustafa/codev/issues/2)
 
 ## Overview
 
