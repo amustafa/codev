@@ -59,16 +59,15 @@ The spec still does everything it does upstream — solution approaches with tra
 
 ## Fork Management
 
-This fork tracks upstream on `main` and carries custom changes on `amustafa-main` (the default branch).
+This fork tracks upstream on `main` (the default branch) and rebases onto `upstream/main` to stay current.
 
 | Command | What it does |
 |---|---|
 | `make status` | Show divergence in both directions |
-| `make sync` | Fetch upstream + rebase `amustafa-main` on `upstream/main` (local only) |
+| `make sync` | Fetch upstream + rebase `main` on `upstream/main` (local only) |
 | `make rebase` | Same + force-push to origin |
-| `make sync-main` | Reset local `main` to match `upstream/main` exactly |
 | `make upstream-pr BRANCH=feat/foo` | Create a branch off `upstream/main` for a PR to cluesmith |
-| `make cherry-pick-upstream COMMIT=abc` | Cherry-pick an upstream commit onto `amustafa-main` |
+| `make cherry-pick-upstream COMMIT=abc` | Cherry-pick an upstream commit onto `main` |
 
 ---
 
